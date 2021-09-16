@@ -96,7 +96,7 @@ const mineNumber = (x, y, gameBoard) => {
     }
     return mineNumber
   } else {
-    return gameBoard[x][y]
+    return "you lose"
   }
 }
 

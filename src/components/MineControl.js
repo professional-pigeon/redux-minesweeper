@@ -18,11 +18,14 @@ class MineControl extends React.Component {
     }
   }
 
-  addMines = (numberOfMines) => {
+  addMines = (numberOfMines, board) => {
     const { dispatch } = this.props
     for(let i = 1; i < numberOfMines+1; i++) {
       let x = Math.floor(Math.random() * 5)
       let y = Math.floor(Math.random() * 5)
+      if (board[x][y] === "M" ) {
+        i--
+      }
       let action = {
         type: "ADD_SYMBOL",
         symbol: "M",
@@ -75,7 +78,7 @@ class MineControl extends React.Component {
           buttonText = "reset game"
     } else {
       visibleState = <p>This works</p>
-      buttonFunction=() => this.addMines(5)
+      buttonFunction=() => this.addMines(5, gameBoard)
       buttonText = "add 5 mines"
     }
     return (

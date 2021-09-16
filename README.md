@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+1. be sure it adds 5 mines
+  until loop or recursive, can not tell. 
+2. Turn the board into cells? or like you know make the board look nicer
+3. pops up a you lose alert when you reveal a mine.
+4. add the second reset function to the reset button
+5. set the board size and mine number at begginning of game.
