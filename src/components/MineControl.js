@@ -20,19 +20,26 @@ class MineControl extends React.Component {
 
   addMines = (numberOfMines, board) => {
     const { dispatch } = this.props
+    let action = {}
     for(let i = 1; i < numberOfMines+1; i++) {
       let x = Math.floor(Math.random() * 5)
       let y = Math.floor(Math.random() * 5)
       if (board[x][y] === "M" ) {
         i--
       }
-      let action = {
+      action = {
         type: "ADD_SYMBOL",
         symbol: "M",
         xCoord: x,
         yCoord: y
       }
       dispatch(action)
+    }
+    for (let j = 0; j < 5; j++) {
+      for (let m = 0; m < 5; m++) {
+        action = mineNumber(j, m, board)
+        dispatch(action)
+      }
     }
     this.setState({
       gameBegun: true
@@ -62,6 +69,10 @@ class MineControl extends React.Component {
     })
   }
 
+
+
+
+
   render() {
     let gameBoard = this.props.boardState
     let buttonFunction = null
@@ -87,6 +98,66 @@ class MineControl extends React.Component {
         <Button onClick={buttonFunction} > {buttonText} </Button>
       </div>
     )
+  }
+}
+
+
+const mineNumber = (x, y, gameBoard) => {
+  if (gameBoard[x][y] != "M") {
+    return mineChecker(x, y, gameBoard)
+  } else {
+    console.log("no go")
+    return { type: "DO_NOTHING"}
+  }
+}
+
+const mineChecker = (x, y, gameBoard) => {
+  let mineNumber = 0
+  if (y > 0) {
+    if (gameBoard[x][y-1] === "M") {
+      mineNumber++
+    }
+  }
+  if (y < 4) {
+    if (gameBoard[x][y+1] === "M") {
+      mineNumber++
+      }
+  }
+  if (x > 0) {
+    if (gameBoard[x-1][y] === "M") {
+      mineNumber++
+    }
+    if(y < 4) {
+      if (gameBoard[x-1][y+1] === "M") {
+        mineNumber++
+      }
+    }
+    if (y > 0) {
+      if (gameBoard[x-1][y-1] === "M") {
+        mineNumber++
+      }
+    }
+  }
+  if (x < 4) {
+    if (gameBoard[x+1][y] === "M") {
+      mineNumber++
+    }
+    if (y > 0) {
+      if (gameBoard[x+1][y-1] === "M") {
+        mineNumber++
+      }
+    }
+    if (y < 4) {
+      if (gameBoard[x+1][y+1] === "M") {
+        mineNumber++
+      }
+    }
+  }
+  return {
+    type: "ADD_SYMBOL",
+    symbol: mineNumber,
+    xCoord: x,
+    yCoord: y,
   }
 }
 
