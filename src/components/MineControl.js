@@ -63,18 +63,11 @@ class MineControl extends React.Component {
 
   resetTheBoard = () => {
     const { dispatch } = this.props
-    let action = {
-      type: 'RESET_GAME'
-    }
-    dispatch(action)
+    doubleDispatch(dispatch)
     this.setState({
       gameBegun: false
     })
   }
-
-
-
-
 
   render() {
     let gameBoard = this.props.boardState
@@ -162,6 +155,15 @@ const mineChecker = (x, y, gameBoard) => {
     xCoord: x,
     yCoord: y,
   }
+}
+
+const doubleDispatch = (dispatch) => {
+  dispatch({
+    type: "RESET_GAME"
+  })
+  dispatch({
+    type: "RESET_VISIBILITY"
+  })
 }
 
 
