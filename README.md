@@ -72,5 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 2. Turn the board into cells? or like you know make the board look nicer
-4. add the second reset function to the reset button so it resets the display state.
 5. set the board size and mine number at begginning of game.
