@@ -46,7 +46,7 @@ class MineControl extends React.Component {
     })
   }
 
-  showCell = (x, y) => {
+  showCell = (x, y, gameBoard) => {
     const { dispatch } = this.props
     let action = {
       type: "VISIBILITY_CHANGE",
@@ -55,6 +55,9 @@ class MineControl extends React.Component {
       yCoord: y
     }
     dispatch(action)
+    if (gameBoard[x][y] === "M") {
+      alert("you lose")
+    }
     this.setState({})
   }
 
