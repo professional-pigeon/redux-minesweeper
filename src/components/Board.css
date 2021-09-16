@@ -1,8 +1,11 @@
 .boardRow > .col {
   border: solid 2px black;
-  height: 5vh;
-  width: 5vh;
+  height: 10vh;
+  max-width: 10vh;
   margin: .5px;
   box-shadow: 2px 3px 1px 0;
   border-radius: 5px 5px 5px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
